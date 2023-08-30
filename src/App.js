@@ -1,10 +1,15 @@
-
+import Tasks from './components/Tasks';
+import NewTasks from './components/AddTask';
 import './App.css';
+import React from 'react';
+import NewTaskForm from './components/NewTaskForm';
 
 function App() {
   return (
-    <div className="App">
-     
+    <div >
+      <Tasks />
+      <NewTasks />
+      <NewTaskForm />
     </div>
   );
 }
