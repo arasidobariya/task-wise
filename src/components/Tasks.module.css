@@ -3,4 +3,6 @@
     margin-top: 2rem;
     max-width: 800px;
     min-width: 275px;
+    outline-style: auto;
+    outline-color: white;
 }
