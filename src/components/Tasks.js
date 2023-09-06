@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 
 import styles from './Tasks.module.css';
 import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses } from '@mui/material';
+import AddTask from './AddTask';
 function Tasks() {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -13,7 +14,7 @@ function Tasks() {
     },
 
   }));
-  return (
+  return (<div>
     <Grid container  >
       <Grid item xs={12} >
 
@@ -46,6 +47,8 @@ function Tasks() {
 
       </Grid>
     </Grid>
+    <AddTask/>
+    </div>
   )
 }
 

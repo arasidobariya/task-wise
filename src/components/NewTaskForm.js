@@ -5,6 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import styles from './NewTaskForm.module.css'
+import { Link } from 'react-router-dom'
 function NewTaskForm() {
     return (
 
@@ -35,8 +36,8 @@ function NewTaskForm() {
                 </Grid>
             </Grid>
             <Stack spacing={2} direction="row" className={styles.stack}>
-                <Button variant="contained" className={styles.button}>Cancel</Button>
-                <Button variant="contained" color="success" className={styles.button}>Save</Button>
+                <Link to='/'>   <Button variant="contained" className={styles.button}>Cancel</Button></Link>
+                <Link to='/'>  <Button variant="contained" color="success" className={styles.button}>Save</Button> </Link>
 
             </Stack>
         </Card>
