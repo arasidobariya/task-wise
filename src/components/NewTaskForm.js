@@ -7,6 +7,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import styles from './NewTaskForm.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function NewTaskForm(props) {
 
@@ -22,12 +23,12 @@ function NewTaskForm(props) {
         setEnteredOwner(event.target.value);
     }
     const dateChangeHandler = (date) => {
-        setEnteredDate(date.format())
+        setEnteredDate(date.format('MMMM DD, YYYY'))
     }
-
+    const navigate = useNavigate();
     const submitHandler = (event) => {
         event.preventDefault();
-
+        navigate('/')
         const taskData = {
             task: enteredTask,
             owner: enteredOwner,
@@ -66,7 +67,11 @@ function NewTaskForm(props) {
                     <Grid item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs} className={styles.DatePicker}>
                             <DemoContainer required components={['DatePicker']}>
-                                <DatePicker label="Date of completion" onChange={dateChangeHandler} />
+                                <DatePicker label="Date of completion" disablePast="true" slotProps={{
+                                    textField: {
+                                        required: true,
+                                    },
+                                }} onChange={dateChangeHandler} />
                             </DemoContainer>
                         </LocalizationProvider>
                     </Grid>

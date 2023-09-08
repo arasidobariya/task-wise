@@ -2,15 +2,17 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 
 import styles from './Tasks.module.css';
-import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses } from '@mui/material';
+import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses, Button } from '@mui/material';
 import AddTask from './AddTask';
 function Tasks(props) {
+
+
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.dark,
       color: theme.palette.common.white,
-      
+
     },
 
   }));
@@ -34,7 +36,8 @@ function Tasks(props) {
                 <TableCell> {task.owner}</TableCell>
                 <TableCell>{task.date}</TableCell>
                 <TableCell></TableCell>
-                <TableCell></TableCell>
+                <TableCell><Button variant="contained" className={styles.button} size="small">Edit</Button>
+                  <Button variant="contained" color="error" className={styles.button} size="small" >Delete </Button></TableCell>
               </TableRow>
             ))}
           </TableBody>
