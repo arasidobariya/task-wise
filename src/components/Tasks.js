@@ -10,7 +10,7 @@ function Tasks(props) {
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.dark,
       color: theme.palette.common.white,
-
+      
     },
 
   }));
@@ -21,28 +21,29 @@ function Tasks(props) {
         <Table className={styles.table}>
           <TableHead >
             <TableRow >
-              <StyledTableCell align='center'>Tasks</StyledTableCell>
-              <StyledTableCell align='center'>Owner</StyledTableCell>
-              <StyledTableCell align='center'> Date of Completion</StyledTableCell>
-              <StyledTableCell align='center'>Status </StyledTableCell>
-              <StyledTableCell align='center'> </StyledTableCell>
+              <StyledTableCell >Tasks</StyledTableCell>
+              <StyledTableCell>Owner</StyledTableCell>
+              <StyledTableCell > Date of Completion</StyledTableCell>
+              <StyledTableCell >Status </StyledTableCell>
+              <StyledTableCell > </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {props.items.map((task) => (
-              <TableRow> <TableCell>{task.task}</TableCell>
+              <TableRow key={task.id} > <TableCell>{task.task} </TableCell>
                 <TableCell> {task.owner}</TableCell>
+                <TableCell>{task.date}</TableCell>
+                <TableCell></TableCell>
                 <TableCell></TableCell>
               </TableRow>
             ))}
-
           </TableBody>
         </Table>
 
       </Grid>
     </Grid>
     <AddTask />
-  </div>
+  </div >
   )
 }
 

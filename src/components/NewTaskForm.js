@@ -65,15 +65,15 @@ function NewTaskForm(props) {
                         /></Grid>
                     <Grid item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs} className={styles.DatePicker}>
-                            <DemoContainer components={['DatePicker']}>
-                                <DatePicker value={enteredDate} onChange={dateChangeHandler} label="Date of completion" />
+                            <DemoContainer required components={['DatePicker']}>
+                                <DatePicker label="Date of completion" onChange={dateChangeHandler} />
                             </DemoContainer>
                         </LocalizationProvider>
                     </Grid>
                 </Grid>
                 <Stack spacing={2} direction="row" className={styles.stack}>
                     <Link to='/'>   <Button variant="contained" className={styles.button}>Cancel</Button></Link>
-                    <Button type='submit' variant="contained" color="success" className={styles.button}>Save</Button>
+                    <Button type='submit' variant="contained" color="success" className={styles.button}> Save </Button>
 
                 </Stack>
             </Card>

@@ -10,12 +10,12 @@ const dummyData = [{
   id: 't1',
   task: 'cut the lawn',
   owner: 'AD',
-  date: new Date(2020, 7, 14),
+  date: 'March 23, 2010'
 }, {
   id: 't2',
   task: 'pay bill',
   owner: 'HP',
-  date: new Date(2021, 10, 15),
+  date: 'March 23, 2010'
 },
 ]
 function App() {
