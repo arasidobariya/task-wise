@@ -1,6 +1,7 @@
 .formlayout {
     margin: auto;
-    width: 800px;
+    max-width: 800px;
+    min-width: 300px;
     margin-top: 50px;
     padding: 25px;
     outline-color: #0063cc;

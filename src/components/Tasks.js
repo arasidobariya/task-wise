@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import styles from './Tasks.module.css';
 import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses } from '@mui/material';
 import AddTask from './AddTask';
-function Tasks() {
+function Tasks(props) {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -29,26 +29,20 @@ function Tasks() {
             </TableRow>
           </TableHead>
           <TableBody>
-
-            <TableRow
-
-            >
-              <TableCell component="th" scope="row">
-                increase the temp and cut the lawn
-              </TableCell>
-              <TableCell >Henish Patel</TableCell>
-              <TableCell ></TableCell>
-              <TableCell ></TableCell>
-              <TableCell ></TableCell>
-            </TableRow>
+            {props.items.map((task) => (
+              <TableRow> <TableCell>{task.task}</TableCell>
+                <TableCell> {task.owner}</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            ))}
 
           </TableBody>
         </Table>
 
       </Grid>
     </Grid>
-    <AddTask/>
-    </div>
+    <AddTask />
+  </div>
   )
 }
 
