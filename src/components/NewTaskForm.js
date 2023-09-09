@@ -28,21 +28,22 @@ function NewTaskForm(props) {
     const navigate = useNavigate();
     const submitHandler = (event) => {
         event.preventDefault();
-        navigate('/')
         const taskData = {
             task: enteredTask,
             owner: enteredOwner,
             date: enteredDate
         }
         props.onSaveTaskData(taskData)
+        navigate('/')
         setEnteredTask('');
         setEnteredOwner('')
         setEnteredDate('')
     }
 
     return (
-        <form onSubmit={submitHandler}>
-            <Card className={styles.formlayout} variant="outlined">
+
+        <Card className={styles.formlayout} variant="outlined">
+            <form onSubmit={submitHandler}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <TextField fullWidth required
@@ -67,7 +68,7 @@ function NewTaskForm(props) {
                     <Grid item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs} className={styles.DatePicker}>
                             <DemoContainer required components={['DatePicker']}>
-                                <DatePicker label="Date of completion" disablePast="true" slotProps={{
+                                <DatePicker label="Date of completion" disablePast slotProps={{
                                     textField: {
                                         required: true,
                                     },
@@ -79,10 +80,9 @@ function NewTaskForm(props) {
                 <Stack spacing={2} direction="row" className={styles.stack}>
                     <Link to='/'>   <Button variant="contained" className={styles.button}>Cancel</Button></Link>
                     <Button type='submit' variant="contained" color="success" className={styles.button}> Save </Button>
+                </Stack>    </form>
+        </Card >
 
-                </Stack>
-            </Card>
-        </form>
 
     )
 }

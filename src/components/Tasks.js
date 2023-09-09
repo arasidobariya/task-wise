@@ -6,8 +6,6 @@ import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasse
 import AddTask from './AddTask';
 function Tasks(props) {
 
-
-
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.dark,
@@ -23,21 +21,24 @@ function Tasks(props) {
         <Table className={styles.table}>
           <TableHead >
             <TableRow >
-              <StyledTableCell >Tasks</StyledTableCell>
-              <StyledTableCell>Owner</StyledTableCell>
-              <StyledTableCell > Date of Completion</StyledTableCell>
-              <StyledTableCell >Status </StyledTableCell>
-              <StyledTableCell > </StyledTableCell>
+              <StyledTableCell> Tasks </StyledTableCell>
+              <StyledTableCell> Owner </StyledTableCell>
+              <StyledTableCell> Date of Completion </StyledTableCell>
+              <StyledTableCell> Status </StyledTableCell>
+              <StyledTableCell> </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.items.map((task) => (
-              <TableRow key={task.id} > <TableCell>{task.task} </TableCell>
+            {props.items.map((task, index) => (
+              <TableRow key={task.id} >
+                <TableCell>{task.task} </TableCell>
                 <TableCell> {task.owner}</TableCell>
                 <TableCell>{task.date}</TableCell>
                 <TableCell></TableCell>
-                <TableCell><Button variant="contained" className={styles.button} size="small">Edit</Button>
-                  <Button variant="contained" color="error" className={styles.button} size="small" >Delete </Button></TableCell>
+                <TableCell>
+                  <Button variant="contained" className={styles.button} size="small">Edit</Button>
+                  <Button variant="contained" color="error" className={styles.button} size="small" onClick={() => props.onDeleteItem(index)}> Delete </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

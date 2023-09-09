@@ -30,8 +30,17 @@ function App() {
     })
 
   }
+
+  const deleteItemHandler = (index) => {
+  
+    var remainingArray = [...task]
+    remainingArray.splice(index, 1)
+    
+    setTask(remainingArray)
+  }
+
   const router = createBrowserRouter([
-    { path: '/', element: <Tasks items={task} /> },
+    { path: '/', element: <Tasks items={task} onDeleteItem={deleteItemHandler} /> },
     {
       path: '/AddTask', element: <NewTaskForm onSaveTaskData={saveTaskDataHandler} />
     }
