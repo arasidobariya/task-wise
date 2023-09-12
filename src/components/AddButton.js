@@ -1,8 +1,8 @@
 import { Button, Box } from '@mui/material';
 import React from 'react';
-import styles from './AddTask.module.css'
+import styles from './AddButton.module.css'
 import { Link } from 'react-router-dom'
-function AddTask() {
+function AddButton() {
 
     return (
         <Box className={styles.box} >
@@ -10,4 +10,4 @@ function AddTask() {
         </Box>
     );
 }
-export default AddTask;
+export default AddButton;

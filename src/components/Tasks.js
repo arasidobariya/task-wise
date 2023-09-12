@@ -1,9 +1,10 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-
+import { Link } from 'react-router-dom';
 import styles from './Tasks.module.css';
-import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses, Button } from '@mui/material';
-import AddTask from './AddTask';
+import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses, Button, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+import AddButton from './AddButton';
+
 function Tasks(props) {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -24,7 +25,7 @@ function Tasks(props) {
               <StyledTableCell> Tasks </StyledTableCell>
               <StyledTableCell> Owner </StyledTableCell>
               <StyledTableCell> Date of Completion </StyledTableCell>
-              <StyledTableCell> Status </StyledTableCell>
+              <StyledTableCell> Completed </StyledTableCell>
               <StyledTableCell> </StyledTableCell>
             </TableRow>
           </TableHead>
@@ -34,9 +35,14 @@ function Tasks(props) {
                 <TableCell>{task.task} </TableCell>
                 <TableCell> {task.owner}</TableCell>
                 <TableCell>{task.date}</TableCell>
-                <TableCell></TableCell>
                 <TableCell>
-                  <Button variant="contained" className={styles.button} size="small">Edit</Button>
+                  <FormGroup>
+                    <FormControlLabel control={<Checkbox />} />
+
+                  </FormGroup>
+                </TableCell>
+                <TableCell>
+                  <Link to={'/Edit/' + index} >  <Button variant="contained" className={styles.button} size="small" >Edit</Button> </Link>
                   <Button variant="contained" color="error" className={styles.button} size="small" onClick={() => props.onDeleteItem(index)}> Delete </Button>
                 </TableCell>
               </TableRow>
@@ -46,7 +52,8 @@ function Tasks(props) {
 
       </Grid>
     </Grid>
-    <AddTask />
+    <AddButton />
+
   </div >
   )
 }
