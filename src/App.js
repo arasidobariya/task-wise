@@ -1,11 +1,11 @@
 import Tasks from './components/Tasks';
-
 import './App.css';
 import React from 'react';
 import NewTaskForm from './components/NewTaskForm';
 import EditForm from './components/EditForm';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
+import taskContext from './taskContext';
 
 const dummyData = [{
   id: 't1',
@@ -21,6 +21,8 @@ const dummyData = [{
 ]
 function App() {
   const [tasks, setTasks] = useState(dummyData)
+
+
   const saveTaskDataHandler = (task) => {
     const taskData = {
       ...task,
@@ -29,9 +31,7 @@ function App() {
     setTasks(prevTasks => {
       return [taskData, ...prevTasks]
     })
-
   }
-
   const deleteItemHandler = (index) => {
     var remainingArray = [...tasks]
     remainingArray.splice(index, 1)
@@ -43,21 +43,24 @@ function App() {
     updatedArray[index] = task
     setTasks(updatedArray)
   }
+
+
   const router = createBrowserRouter([
     {
-      path: '/', element: <Tasks items={tasks} onDeleteItem={deleteItemHandler} />,
+      path: '/', element: <Tasks onDeleteItem={deleteItemHandler} />
     },
     {
       path: '/AddTask', element: <NewTaskForm onSaveTaskData={saveTaskDataHandler} />
     },
     {
-      path: '/Edit/:index', element: <EditForm items={tasks} onSaveItem={editItemHandler} />
+      path: '/Edit/:index', element: <EditForm onSaveItem={editItemHandler} />
     }])
 
+
   return (
-    <div >
+    <taskContext.Provider value={tasks}>
       <RouterProvider router={router} />
-    </div>
+    </taskContext.Provider>
   );
 }
 
