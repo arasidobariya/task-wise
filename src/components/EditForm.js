@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, TextField, Grid, Stack, Button } from '@mui/material';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -10,13 +10,15 @@ import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import dayjs from 'dayjs';
+import taskContext from '../taskContext';
 
 function EditForm(props) {
+    const ctx = useContext(taskContext)
     const param = useParams();
     const navigate = useNavigate();
-    const [enteredTask, setEnteredTask] = useState(props.items[param.index].task);
-    const [enteredOwner, setEnteredOwner] = useState(props.items[param.index].owner);
-    const [enteredDate, setEnteredDate] = useState(props.items[param.index].date)
+    const [enteredTask, setEnteredTask] = useState(ctx[param.index].task);
+    const [enteredOwner, setEnteredOwner] = useState(ctx[param.index].owner);
+    const [enteredDate, setEnteredDate] = useState(ctx[param.index].date)
 
     const taskChangeHandler = (event) => {
         setEnteredTask(event.target.value);
@@ -40,6 +42,7 @@ function EditForm(props) {
         navigate('/')
 
     }
+
     return (
         <Card className={styles.formlayout} variant="outlined">
             <form onSubmit={editHandler}>
@@ -52,7 +55,7 @@ function EditForm(props) {
                             multiline
                             variant="standard"
                             onChange={taskChangeHandler}
-                            defaultValue={props.items[param.index].task}
+                            defaultValue={ctx[param.index].task}
                         /></Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField fullWidth
@@ -62,7 +65,7 @@ function EditForm(props) {
                             placeholder="Add Owner Name"
                             variant="standard"
                             onChange={ownerChangeHandler}
-                            defaultValue={props.items[param.index].owner}
+                            defaultValue={ctx[param.index].owner}
                         /></Grid>
                     <Grid item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs} className={styles.DatePicker}>
@@ -71,7 +74,7 @@ function EditForm(props) {
                                     textField: {
                                         required: true,
                                     },
-                                }} onChange={dateChangeHandler} defaultValue={dayjs(props.items[param.index].date)} />
+                                }} onChange={dateChangeHandler} defaultValue={dayjs(ctx[param.index].date)} />
                             </DemoContainer>
                         </LocalizationProvider>
                     </Grid>
@@ -81,8 +84,7 @@ function EditForm(props) {
                     <Button type='submit' variant="contained" color="success" className={styles.button} > Save </Button>
                 </Stack>
             </form>
-        </Card >
-    )
+        </Card >)
 }
 
 export default EditForm;

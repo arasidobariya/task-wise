@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import styles from './Tasks.module.css';
 import { TableHead, TableRow, Table, TableBody, TableCell, Grid, tableCellClasses, Button, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import AddButton from './AddButton';
+import taskContext from '../taskContext';
 
 function Tasks(props) {
-
+  const ctx = useContext(taskContext)
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.dark,
       color: theme.palette.common.white,
 
     },
-
   }));
+
+
   return (<div>
     <Grid container  >
       <Grid item xs={12} >
@@ -30,7 +32,7 @@ function Tasks(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.items.map((task, index) => (
+            {ctx.map((task, index) => (
               <TableRow key={task.id} >
                 <TableCell>{task.task} </TableCell>
                 <TableCell> {task.owner}</TableCell>
@@ -38,7 +40,6 @@ function Tasks(props) {
                 <TableCell>
                   <FormGroup>
                     <FormControlLabel control={<Checkbox />} />
-
                   </FormGroup>
                 </TableCell>
                 <TableCell>
