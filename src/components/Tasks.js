@@ -46,7 +46,12 @@ function Tasks(props) {
                   <TableCell> {task.owner}</TableCell>
                   <TableCell>{task.date}</TableCell>
                   <TableCell>
-                    <Checkbox />
+                    <Checkbox
+                      checked={task.isCompleted}
+                      onChange={(event) =>
+                        props.handleCheckBoxChange(index, event)
+                      }
+                    />
                   </TableCell>
                   <TableCell>
                     <Link to={"/Edit/" + index}>

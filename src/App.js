@@ -12,12 +12,14 @@ const dummyData = [
     task: "cut the lawn",
     owner: "AD",
     date: "2024-02-25 ",
+    isCompleted: true,
   },
   {
     id: "t2",
     task: "pay bill",
     owner: "HP",
     date: "2024-03-08",
+    isCompleted: false,
   },
 ];
 function App() {
@@ -44,10 +46,22 @@ function App() {
     setTasks(updatedArray);
   };
 
+  const handleCheckBoxChange = (index, event) => {
+    var isCompleted = event.target.checked;
+    var updatedArray = [...tasks];
+    updatedArray[index].isCompleted = isCompleted;
+    setTasks(updatedArray);
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Tasks onDeleteItem={deleteItemHandler} />,
+      element: (
+        <Tasks
+          onDeleteItem={deleteItemHandler}
+          handleCheckBoxChange={handleCheckBoxChange}
+        />
+      ),
     },
     {
       path: "/AddTask",
