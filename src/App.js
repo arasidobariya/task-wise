@@ -1,61 +1,64 @@
-import Tasks from './components/Tasks';
-import './App.css';
-import React from 'react';
-import NewTaskForm from './components/NewTaskForm';
-import EditForm from './components/EditForm';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { useState } from 'react';
-import taskContext from './taskContext';
+import Tasks from "./components/Tasks";
+import "./App.css";
+import React from "react";
+import NewTaskForm from "./components/NewTaskForm";
+import EditForm from "./components/EditForm";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useState } from "react";
+import taskContext from "./taskContext";
 
-const dummyData = [{
-  id: 't1',
-  task: 'cut the lawn',
-  owner: 'AD',
-  date: '2024-02-25 '
-}, {
-  id: 't2',
-  task: 'pay bill',
-  owner: 'HP',
-  date: '2024-03-08'
-},
-]
+const dummyData = [
+  {
+    id: "t1",
+    task: "cut the lawn",
+    owner: "AD",
+    date: "2024-02-25 ",
+  },
+  {
+    id: "t2",
+    task: "pay bill",
+    owner: "HP",
+    date: "2024-03-08",
+  },
+];
 function App() {
-  const [tasks, setTasks] = useState(dummyData)
-
+  const [tasks, setTasks] = useState(dummyData);
 
   const saveTaskDataHandler = (task) => {
     const taskData = {
       ...task,
-      id: Math.random().toString()
-    }
-    setTasks(prevTasks => {
-      return [taskData, ...prevTasks]
-    })
-  }
+      id: Math.random().toString(),
+    };
+    setTasks((prevTasks) => {
+      return [taskData, ...prevTasks];
+    });
+  };
   const deleteItemHandler = (index) => {
-    var remainingArray = [...tasks]
-    remainingArray.splice(index, 1)
-    setTasks(remainingArray)
-  }
+    var remainingArray = [...tasks];
+    remainingArray.splice(index, 1);
+    setTasks(remainingArray);
+  };
 
   const editItemHandler = (index, task) => {
-    var updatedArray = [...tasks]
-    updatedArray[index] = task
-    setTasks(updatedArray)
-  }
-
+    var updatedArray = [...tasks];
+    updatedArray[index] = task;
+    setTasks(updatedArray);
+  };
 
   const router = createBrowserRouter([
     {
-      path: '/', element: <Tasks onDeleteItem={deleteItemHandler} />
+      path: "/",
+      element: <Tasks onDeleteItem={deleteItemHandler} />,
     },
     {
-      path: '/AddTask', element: <NewTaskForm onSaveTaskData={saveTaskDataHandler} />
+      path: "/AddTask",
+      element: <NewTaskForm onSaveTaskData={saveTaskDataHandler} />,
     },
     {
-      path: '/Edit/:index', element: <EditForm onSaveItem={editItemHandler} />
-    }])
-
+      path: "/Edit/:index",
+      element: <EditForm onSaveItem={editItemHandler} />,
+    },
+  ]);
 
   return (
     <taskContext.Provider value={tasks}>
