@@ -1,14 +1,13 @@
 .table {
-    margin: auto;
-    margin-top: 2rem;
-    max-width: 800px;
-    min-width: 275px;
-    outline-style: auto;
-    outline-color: white;
-    text-align: center;
+  margin: auto;
+  margin-top: 2rem;
+  max-width: 800px;
+  min-width: 275px;
+  outline-style: auto;
+  outline-color: white;
+  text-align: center;
 }
 
 .button {
-    margin: 10px;
-
+  margin: 10px;
 }

@@ -1,25 +1,24 @@
 .formlayout {
-    margin: auto;
-    max-width: 800px;
-    min-width: 300px;
-    margin-top: 50px;
-    padding: 25px;
-    outline-color: #0063cc;
-    outline-style: auto
+  margin: auto;
+  max-width: 800px;
+  min-width: 300px;
+  margin-top: 50px;
+  padding: 25px;
+  outline-color: #0063cc;
+  outline-style: auto;
 }
 
 .datePicker {
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .stack {
-    margin-top: 2rem;
-    justify-content: end;
+  margin-top: 2rem;
+  justify-content: end;
 }
 
 .button {
-    margin: 10px;
-
+  margin: 10px;
 }

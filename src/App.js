@@ -1,5 +1,4 @@
 import Tasks from "./components/Tasks";
-import "./App.css";
 import React from "react";
 import NewTaskForm from "./components/NewTaskForm";
 import EditForm from "./components/EditForm";
