@@ -17,7 +17,7 @@ import AddButton from "./AddButton";
 import taskContext from "../taskContext";
 
 function Tasks(props) {
-  const ctx = useContext(taskContext);
+  const tasks = useContext(taskContext);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.dark,
@@ -40,7 +40,7 @@ function Tasks(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {ctx.map((task, index) => (
+              {tasks.map((task, index) => (
                 <TableRow key={task.id}>
                   <TableCell>{task.task} </TableCell>
                   <TableCell> {task.owner}</TableCell>
