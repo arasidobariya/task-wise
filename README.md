@@ -18,7 +18,12 @@ Need to make changes to a task? No problem! Edit the task details, update due da
 
 ### 4. Delete Task
 
-You can delete any task if it's not needed.
+Easily delete unwanted tasks.
+
+### 5. Mark as Complete Task
+
+Need to check if the task is complete before the due date? No Worries!! You can check the task mark as complete.
+
 
 ## Getting Started
 
@@ -33,9 +38,11 @@ Once the development server is running, you can access the app in your web brows
 
 ## Technologies Used
 
-- React: Our app is built using the React library, providing a fast and responsive user interface.
-- Redux: We use Redux for state management, ensuring a smooth and predictable user experience.
-- CSS Modules: CSS Modules help us style our components in a modular and maintainable way.
+- React
+- Material UI
+- CSS Module
+- Router
+- React Hooks 
 
 Thank you for choosing My React Task Manager App! We hope it helps you stay organized and productive.
 
