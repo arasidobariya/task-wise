@@ -1,4 +1,4 @@
-##Task-Wise App
+# Task-Wise App
 
 Welcome to Task-Wise App! This web application is designed to help you manage your tasks efficiently. Whether you're organizing your personal to-dos or collaborating with a team, our app has you covered.
 
