@@ -22,3 +22,7 @@
 .button {
   margin: 10px;
 }
+
+.MuiFormHelperText-root {
+  color: red;
+}

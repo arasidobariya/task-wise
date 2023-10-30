@@ -26,10 +26,15 @@ function App() {
   const [tasks, setTasks] = useState(dummyData);
 
   const saveTaskDataHandler = (task) => {
+    const existingTasks = tasks.filter(
+      (existing) => existing.task === task.task
+    );
+    console.log(existingTasks);
     const taskData = {
       ...task,
       id: Math.random().toString(),
     };
+
     setTasks((prevTasks) => {
       return [taskData, ...prevTasks];
     });

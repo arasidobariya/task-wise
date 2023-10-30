@@ -15,10 +15,11 @@ import taskContext from "../taskContext";
 function EditForm(props) {
   const tasks = useContext(taskContext);
   const param = useParams();
+  const index = param.index;
   const navigate = useNavigate();
-  const [enteredTask, setEnteredTask] = useState(tasks[param.index].task);
-  const [enteredOwner, setEnteredOwner] = useState(tasks[param.index].owner);
-  const [enteredDate, setEnteredDate] = useState(tasks[param.index].date);
+  const [enteredTask, setEnteredTask] = useState(tasks[index].task);
+  const [enteredOwner, setEnteredOwner] = useState(tasks[index].owner);
+  const [enteredDate, setEnteredDate] = useState(tasks[index].date);
 
   const taskChangeHandler = (event) => {
     setEnteredTask(event.target.value);
@@ -37,7 +38,7 @@ function EditForm(props) {
       owner: enteredOwner,
       date: enteredDate,
     };
-    props.onSaveItem(param.index, task);
+    props.onSaveItem(index, task);
     navigate("/");
   };
 
@@ -55,7 +56,7 @@ function EditForm(props) {
               multiline
               variant="standard"
               onChange={taskChangeHandler}
-              defaultValue={tasks[param.index].task}
+              defaultValue={tasks[index].task}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -67,7 +68,7 @@ function EditForm(props) {
               placeholder="Add Owner Name"
               variant="standard"
               onChange={ownerChangeHandler}
-              defaultValue={tasks[param.index].owner}
+              defaultValue={tasks[index].owner}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -85,7 +86,7 @@ function EditForm(props) {
                     },
                   }}
                   onChange={dateChangeHandler}
-                  defaultValue={dayjs(tasks[param.index].date)}
+                  defaultValue={dayjs(tasks[index].date)}
                 />
               </DemoContainer>
             </LocalizationProvider>

@@ -1,18 +1,18 @@
 import React from "react";
 import { Card, TextField, Grid, Stack, Button } from "@mui/material";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styles from "./NewTaskForm.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 function NewTaskForm(props) {
   const [enteredTask, setEnteredTask] = useState("");
   const [enteredOwner, setEnteredOwner] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [error, setError] = useState(null);
 
   const taskChangeHandler = (event) => {
     setEnteredTask(event.target.value);
@@ -26,16 +26,22 @@ function NewTaskForm(props) {
   const navigate = useNavigate();
   const submitHandler = (event) => {
     event.preventDefault();
-    const taskData = {
-      task: enteredTask,
-      owner: enteredOwner,
-      date: enteredDate,
-    };
-    props.onSaveTaskData(taskData);
-    navigate("/");
-    setEnteredTask("");
-    setEnteredOwner("");
-    setEnteredDate("");
+
+    if (enteredDate === "") {
+      setError("Please select a date");
+    } else {
+      const taskData = {
+        task: enteredTask,
+        owner: enteredOwner,
+        date: enteredDate,
+      };
+
+      props.onSaveTaskData(taskData);
+      navigate("/");
+      setEnteredTask("");
+      setEnteredOwner("");
+      setEnteredDate("");
+    }
   };
 
   return (
@@ -72,18 +78,13 @@ function NewTaskForm(props) {
               dateAdapter={AdapterDayjs}
               className={styles.DatePicker}
             >
-              <DemoContainer required components={["DatePicker"]}>
-                <DatePicker
-                  label="Date of completion"
-                  disablePast
-                  slotProps={{
-                    textField: {
-                      required: true,
-                    },
-                  }}
-                  onChange={dateChangeHandler}
-                />
-              </DemoContainer>
+              <DatePicker
+                label="Date of completion"
+                disablePast
+                error
+                onChange={dateChangeHandler}
+                slotProps={{ textField: { helperText: error } }}
+              />
             </LocalizationProvider>
           </Grid>
         </Grid>
